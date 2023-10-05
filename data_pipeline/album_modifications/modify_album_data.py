@@ -1,6 +1,7 @@
 import json
 import pandas as pd
 import os
+import subprocess
 
 def remove_items(data:dict, *args:str):
     ''' deletes keys specified in args from dictionary '''
@@ -47,11 +48,28 @@ for artists_albums in os.listdir('data/albums'):
             new_album['artist_type'] = current_artist['type']
             
             # rename attribute
-            new_album['album_id'] = new_album['id']
+            new_album['album_id'] = new_album.pop('id')
             unwound_albums.append(new_album)
     
 
 
-print(unwound_albums)
+
+print(len(unwound_albums))
+
+# remove old data
+bash_script_path = 'data_pipeline/album_modifications/remove_old_data.sh'
+
+# Use subprocess to execute the Bash script
+try:
+    subprocess.run(['bash', bash_script_path], check=True)
+    print('Bash script executed successfully.')
+except subprocess.CalledProcessError as e:
+    print(f'Error: Bash script execution failed with return code {e.returncode}.')
+except FileNotFoundError:
+    print('Error: Bash script not found.')
+# save cleaned data
+
+with open('data/albums/complete_data.json', 'w') as jsonfile:
+    json.dump(unwound_albums, jsonfile, indent=6)
 
 # TODO move albums into dataframe
