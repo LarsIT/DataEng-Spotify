@@ -1,6 +1,6 @@
 #!/bin/bash
 
-json_file="../data/albums/complete_data.json"
+json_file="../../data/albums/complete_data.json"
 
 # Use jq to extract album_id from the "items" array
 album_ids=$(jq -r '.items[].album_id' "$json_file")
