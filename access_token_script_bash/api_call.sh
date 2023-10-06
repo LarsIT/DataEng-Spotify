@@ -22,3 +22,5 @@ fi
 for artist_id in $spotify_ids; do
     curl -X GET "https://api.spotify.com/v1/artists/$artist_id/albums" -H "Authorization: $token_type $access_token" -o "$albums_folder/${artist_id}_albums.json"
 done
+
+# Get songs from scraped albums

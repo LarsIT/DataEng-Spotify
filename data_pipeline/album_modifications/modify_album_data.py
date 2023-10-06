@@ -69,7 +69,8 @@ except FileNotFoundError:
     print('Error: Bash script not found.')
 # save cleaned data
 
+clean_data = {'items' : unwound_albums} 
 with open('data/albums/complete_data.json', 'w') as jsonfile:
-    json.dump(unwound_albums, jsonfile, indent=6)
+    json.dump(clean_data, jsonfile, indent=6)
 
 # TODO move albums into dataframe
