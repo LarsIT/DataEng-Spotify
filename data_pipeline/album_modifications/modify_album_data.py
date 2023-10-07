@@ -55,7 +55,7 @@ for artists_albums in os.listdir('data/albums'):
 
 print(len(unwound_albums))
 
-# remove old data
+# remove old data (albums)
 bash_script_path = 'data_pipeline/album_modifications/remove_old_data.sh'
 
 # Use subprocess to execute the Bash script
@@ -71,5 +71,3 @@ except FileNotFoundError:
 clean_data = {'items' : unwound_albums} 
 with open('data/albums/complete_data.json', 'w') as jsonfile:
     json.dump(clean_data, jsonfile, indent=6)
-
-# TODO move albums into dataframe
