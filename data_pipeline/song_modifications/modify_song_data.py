@@ -32,19 +32,18 @@ for album in song_data:
 
         remove_items(song, "available_markets", "disc_number", "external_urls", "href", "preview_url", "uri")
 
-        print(artist_count)
-
         for artist in range(0,artist_count):
             current_artist = song["artists"][artist]
 
             new_song = song.copy()
             new_song.pop("artists")
 
+            new_song['album_id'] = album_id
             new_song["artist_name"] = current_artist["name"]
             new_song["artist_id"] = current_artist["id"]
             new_song["artist_type"] = current_artist["type"]
             new_song["song_id"] = new_song.pop("id")
-
+            
             unwound_songs.append(new_song)
             
 
