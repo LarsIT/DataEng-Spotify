@@ -19,6 +19,6 @@ for item in data["items"]:
 
 songs = list(set(songs))
 
-with open("data/transferable_data/songs.txt", "r") as outfile:
+with open("data/transferable_data/songs.txt", "w") as outfile:
     for song in songs:
         outfile.write(f"{song}, \n")

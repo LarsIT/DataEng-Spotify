@@ -25,23 +25,23 @@ if __name__ == '__main__':
         print('Artist Call Check') 
 
         sp.run(['python', "data_pipeline/artist_modifications/modify_artist_data.py"], check=True) # artist call
-        print('Artist Modification Check') # TODO
+        print('Artist Modification Check') 
 
         sp.run(['bash', "scripts/api_calls/api_call_songs.sh"], check=True) # song call
         print('Song Call Check')
 
         sp.run(['python', "data_pipeline/song_modifications/modify_song_data.py"], check=True) # artist call
-        print('Song Modification Check') # TODO
+        print('Song Modification Check') 
 
         # data transformation
         sp.run(['python', "data_pipeline/data_transformation/albums_artists.py"], check=True) # artist call
-        print('Albums_Artists Transformation Check') # TODO
+        print('Albums_Artists Transformation Check') 
 
-        sp.run(['python', "data_pipeline/data_transformation/artist_genres.py"], check=True) # artist call
-        print('Artist_Genres Transformation Check') # TODO
+        sp.run(['python', "data_pipeline/data_transformation/artists_genres.py"], check=True) # artist call
+        print('Artist_Genres Transformation Check') 
 
-        sp.run(['python', "/data_pipeline/data_transformation/songs_albums.py.py"], check=True) # artist call
-        print('Song_Albums Transformation Check') # TODO
+        sp.run(['python', "data_pipeline/data_transformation/songs_albums.py"], check=True) # artist call
+        print('Song_Albums Transformation Check') 
         
 
 
