@@ -9,12 +9,13 @@ for item in data["items"]:
     song_id = str(item["song_id"])
     name = str(item["name"])
     duration_ms = int(item["duration_ms"])
-    is_local = item["is_local"]
+    explicit_content = bool(item["explicit"])
+    is_local = bool(item["is_local"])
     track_number = int(item["track_number"])
     album_id = str(item["album_id"])
 
     songs.append(
-        (song_id, name, duration_ms, is_local, track_number, album_id)
+        (song_id, name, duration_ms, explicit_content, is_local, track_number, album_id)
     )
 
 songs = list(set(songs))
