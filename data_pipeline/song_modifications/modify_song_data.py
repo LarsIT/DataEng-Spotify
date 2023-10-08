@@ -26,6 +26,8 @@ for album in song_data:
 
     album = data["items"]
 
+
+    # unwinding artists data structure
     for song in album:
         
         artist_count = len(song["artists"])

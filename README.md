@@ -1,38 +1,34 @@
-# Data Engineering Übungsblatt 1
+# Data Engineering Spotify
 
 ## Thema
 
-Bis das Rechenzentrum wieder funktioniert wird diese Datei das Aufgabenblatt sein.
+Das Herunterladen von Spotify Song-, Alben- und Künstlerdaten und Representieren dieser in einer MySQL Datenbank.
+Ziel sind Auswertungen basierend auf dieser Datenbank aber dieses Repository beschäftigt sich mit der Datenbeschaffung und Datenpersistenz.
 
-Finde eine Datenquelle für Musik- und Songdaten (Songname, Album, Interpret, Streams, Veröffentlichungsdatum, ...).
+## Prozess
 
-Bringe Rohdaten in Format für SQL Datenbank.
+Das gesamte Programm kann `main.py` ausgeführt werden.
 
-Es gibt 4 Tabellen:
+Der Prozess ist in 3 Bestandteile gegliedert.
 
-- Songs,
-- Künstler,
-- Alben,
-- "beinhaltet" (m:n Tabelle)
+### Datenbeschaffung
 
-### Notizen
+Datenbeschaffung läuft über die Spotify API. Auf diese wird über Bash Scripte im `scripts` Ordner zugegriffen.
 
-#### Access Tokens
+### Datenbereinigung
 
-Man muss sich ständig ein neues Access Token generieren lassen (läuft nach 1h ab).
+Die Daten werden in der `data_pipeline` vorverarbeitet. Es werden Datenstrukturen aufgelöst, hierbei werden Dupletten erstellt die sich nur in dem aufgelösten Attribut unterscheiden. Es werden auch unrelevante Attribute gelöscht.
 
-Token muss in jede Anfrage rein.
+Zuletzt werden alle Daten aus einer Datenquelle(Songs, Artists, Albums) in je einem neuen Dokument `complete_data.json` zusammengefügt und die alten Daten gelöscht.
 
-#### Anfragen
+### Datenpersistierung
 
-##### Prozess
+Für Datenbankschema siehe `schema.png`.
 
-- Suche selbst Interpreten auf Spotify von denen man die Daten haben möchte
-- Kopiere ihre SpotifyID in ```data_aquisition```
+Die Daten müssen noch bearbeitet werden um der 3. Normalform zu folgen und Redundanzen zu vermeiden bzw. aufzulösen.
 
-    Es werden dann für alle Interpreten ihre Albendaten gespeichert.
+Einfügen der Daten in die Datenbank läuft über generierte Insert Statements basierend auf den Daten.
 
-    Ein weiteres Programm übernimmt dann die AlbumID von jedem Album und lässt ein batch Skript laufen, dass für diese Alben alle Songs scraped und speichert.
 
-- Datenbereinigung
-- Einführung in Datenbank
+
+
