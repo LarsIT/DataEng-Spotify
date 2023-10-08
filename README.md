@@ -28,7 +28,3 @@ Für Datenbankschema siehe `schema.png`.
 Die Daten müssen noch bearbeitet werden um der 3. Normalform zu folgen und Redundanzen zu vermeiden bzw. aufzulösen.
 
 Einfügen der Daten in die Datenbank läuft über generierte Insert Statements basierend auf den Daten.
-
-
-
-
