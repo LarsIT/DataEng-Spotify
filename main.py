@@ -30,6 +30,18 @@ if __name__ == '__main__':
         sp.run(['bash', "scripts/api_calls/api_call_songs.sh"], check=True) # song call
         print('Song Call Check')
 
+        sp.run(['python', "data_pipeline/song_modifications/modify_song_data.py"], check=True) # artist call
+        print('Song Modification Check') # TODO
+
+        # data transformation
+        sp.run(['python', "data_pipeline/data_transformation/albums_artists.py"], check=True) # artist call
+        print('Albums_Artists Transformation Check') # TODO
+
+        sp.run(['python', "data_pipeline/data_transformation/artist_genres.py"], check=True) # artist call
+        print('Artist_Genres Transformation Check') # TODO
+
+        sp.run(['python', "/data_pipeline/data_transformation/songs_albums.py.py"], check=True) # artist call
+        print('Song_Albums Transformation Check') # TODO
         
 
 
