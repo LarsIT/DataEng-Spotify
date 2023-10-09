@@ -66,6 +66,7 @@ except subprocess.CalledProcessError as e:
     print(f'Error: Bash script execution failed with return code {e.returncode}.')
 except FileNotFoundError:
     print('Error: Bash script not found.')
+    
 # save cleaned data
 
 clean_data = {'items' : unwound_albums} 

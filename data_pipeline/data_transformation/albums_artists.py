@@ -14,7 +14,7 @@ for item in data["items"]:
     album_id = str(item["album_id"])
     album_type = str(item["album_type"])
     name = str(item["name"])
-    total_tracks = item["total_tracks"]
+    total_tracks = int(item["total_tracks"])
     release_date = str(item["release_date"])
 
     albums.append(
@@ -22,7 +22,7 @@ for item in data["items"]:
     )
 
     # album_artist values
-    artist_id = item["artist_spotify_id"]
+    artist_id = str(item["artist_spotify_id"])
 
     albums_artists_relation.append(
         (album_id, artist_id)
