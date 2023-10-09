@@ -23,5 +23,7 @@ unique_album_ids="data/unique_album_ids.txt"
 while read -r line; do
 # reading each line
     curl -X GET "https://api.spotify.com/v1/albums/$line/tracks?limit=50&offset=0" -H "Authorization: $token_type $access_token" -o "$songs_folder/${line}_songs.json"
+
+    sleep 0.1
 done < $unique_album_ids
 
