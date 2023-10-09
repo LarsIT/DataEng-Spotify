@@ -19,7 +19,7 @@ unwound_songs = []
 song_data = os.listdir("data/songs")
 for album in song_data:
         
-    with open(f"data/songs/{album}") as jsonfile:
+    with open(f"data/songs/{album}", "r") as jsonfile:
         data = json.load(jsonfile)
 
     album_id = data["href"].split("/")[-2]
