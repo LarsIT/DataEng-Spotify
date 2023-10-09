@@ -14,6 +14,7 @@ def remove_items(data:dict, *args:str):
 # reduce songs to interesting data points:
 #   album_id, artist_name, artist_id, song_duration, explicit_flag, song_id, song_name, song_number_on_album 
 # get all songs into one document 
+unwound_songs = []
 
 song_data = os.listdir("data/songs")
 for album in song_data:
@@ -21,7 +22,6 @@ for album in song_data:
     with open(f"data/songs/{album}") as jsonfile:
         data = json.load(jsonfile)
 
-    unwound_songs = []
     album_id = data["href"].split("/")[-2]
 
     album = data["items"]
